@@ -1,0 +1,18 @@
+<h1>{{ recipeId }}</h1>
+<h1>{{ query }}</h1>
+    <!-- recipe -->
+<div *ngIf="response">
+
+    <div *ngFor='let r of response.hits; let t = index' >
+       <div *ngIf="t==recipeId">
+        <h1>{{ response.hits[0].recipe.label }}</h1>
+        <ul *ngFor='let i of r.recipe.ingredientLines'>
+            <li>{{i}}</li>
+        </ul>
+        <hr>
+        <ul *ngFor="let i of r.recipe.ingredients">
+            <li>food:{{i.text}} weight: {{i.weight}}</li>
+        </ul>
+        <img style="border-radius: 50%" src="{{r.recipe.image}}" alt="">
+       </div>
+    </div>
